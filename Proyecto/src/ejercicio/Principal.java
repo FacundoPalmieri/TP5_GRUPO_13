@@ -1,11 +1,21 @@
 package ejercicio;
 
+import java.awt.EventQueue;
+
 public class Principal {
 
 	public static void main(String[] args) {
-		
-		Ventana x = new Ventana();
-		x.cambiarVisibilidad(true);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ventana frame = new Ventana();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-
 }
+
+
