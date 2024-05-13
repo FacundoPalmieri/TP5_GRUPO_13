@@ -41,6 +41,16 @@ public class Ventana extends JFrame {
 		
 		
 		JMenuItem miListar = new JMenuItem("Listar");
+		miListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.removeAll();
+				PanelListarPelicula panelListar = new PanelListarPelicula();
+				contentPane.add(panelListar);
+				contentPane.repaint();
+				contentPane.revalidate();
+				
+			}
+		});
 		menuPeli.add(miListar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
