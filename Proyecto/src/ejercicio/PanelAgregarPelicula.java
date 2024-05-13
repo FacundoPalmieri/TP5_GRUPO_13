@@ -16,6 +16,7 @@ public class PanelAgregarPelicula extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textFieldAgregarPelicula;
+	private JComboBox<Categorias> cbCategorias;
 
 	public PanelAgregarPelicula() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -65,14 +66,21 @@ public class PanelAgregarPelicula extends JPanel {
 		gbc_label_2.gridy = 4;
 		add(label_2, gbc_label_2);
 		
-		JComboBox<?> comboBoxGeneros = new JComboBox<Object>();
-		GridBagConstraints gbc_comboBoxGeneros = new GridBagConstraints();
-		gbc_comboBoxGeneros.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxGeneros.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxGeneros.gridx = 3;
-		gbc_comboBoxGeneros.gridy = 4;
-		add(comboBoxGeneros, gbc_comboBoxGeneros);
-		
+	
+			
+			cbCategorias = new JComboBox<Categorias>();
+			GridBagConstraints gbc_cbCategorias = new GridBagConstraints();
+			gbc_cbCategorias.insets = new Insets(0, 0, 5, 5);
+			gbc_cbCategorias.fill = GridBagConstraints.HORIZONTAL;
+			gbc_cbCategorias.gridx = 3;
+			gbc_cbCategorias.gridy = 4;
+			add(cbCategorias, gbc_cbCategorias);
+
+			cbCategorias.addItem(new Categorias(1, "Terror"));
+			cbCategorias.addItem(new Categorias(2, "Accion"));
+			cbCategorias.addItem(new Categorias(3, "Suspenso"));
+			cbCategorias.addItem(new Categorias(4, "Romantica"));
+			
 		
 		
 		//Evento boton Aceptar
