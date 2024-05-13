@@ -2,14 +2,14 @@ package ejercicio;
 
 public class Peliculas {
 	
-	private int id;
+	private static int id=1;
 	private String Nombre;
 	private Categorias categorias;
 	
 	//Constructores
-	public Peliculas(int id, String nombre, Categorias categorias) {
+	public Peliculas(String nombre, Categorias categorias) {
 		super();
-		this.id = id;
+		id++;
 		Nombre = nombre;
 		this.categorias = categorias;
 	}
@@ -19,12 +19,8 @@ public class Peliculas {
 	
 	//Getters y Setters
 
-	public int getId() {
+	public static int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNombre() {

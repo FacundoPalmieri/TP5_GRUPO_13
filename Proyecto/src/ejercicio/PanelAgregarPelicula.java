@@ -9,6 +9,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelAgregarPelicula extends JPanel {
 
@@ -31,6 +33,14 @@ public class PanelAgregarPelicula extends JPanel {
 		gbc_label.gridx = 1;
 		gbc_label.gridy = 2;
 		add(label, gbc_label);
+		
+		JLabel lblNumeroid = new JLabel("NumeroID");
+		GridBagConstraints gbc_lblNumeroid = new GridBagConstraints();
+		gbc_lblNumeroid.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNumeroid.gridx = 3;
+		gbc_lblNumeroid.gridy = 2;
+		add(lblNumeroid, gbc_lblNumeroid);
+		lblNumeroid.setText(String.valueOf(Peliculas.getId()));
 		
 		JLabel label_1 = new JLabel("Nombre");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
@@ -63,7 +73,16 @@ public class PanelAgregarPelicula extends JPanel {
 		gbc_comboBoxGeneros.gridy = 4;
 		add(comboBoxGeneros, gbc_comboBoxGeneros);
 		
+		
+		
+		//Evento boton Aceptar
 		JButton btnAceptarAgregarPelicula = new JButton("Aceptar");
+		btnAceptarAgregarPelicula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		GridBagConstraints gbc_btnAceptarAgregarPelicula = new GridBagConstraints();
 		gbc_btnAceptarAgregarPelicula.fill = GridBagConstraints.BOTH;
 		gbc_btnAceptarAgregarPelicula.gridwidth = 2;
@@ -71,7 +90,8 @@ public class PanelAgregarPelicula extends JPanel {
 		gbc_btnAceptarAgregarPelicula.gridx = 1;
 		gbc_btnAceptarAgregarPelicula.gridy = 6;
 		add(btnAceptarAgregarPelicula, gbc_btnAceptarAgregarPelicula);
-
+		
+		
 	}
 
 }
