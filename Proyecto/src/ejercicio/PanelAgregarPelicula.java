@@ -2,10 +2,14 @@ package ejercicio;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -17,87 +21,81 @@ public class PanelAgregarPelicula extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField textFieldAgregarPelicula;
 	private JComboBox<Categorias> cbCategorias;
+	private JList list;
+	private DefaultListModel<Peliculas> dlModel;
+	
+	
 
 	public PanelAgregarPelicula() {
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{72, 42, 54, 147, 136, 0};
-		gridBagLayout.rowHeights = new int[]{0, 31, 26, 55, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		setLayout(null);
 		
 		JLabel label = new JLabel("ID");
+		label.setBounds(72, 32, 11, 14);
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.anchor = GridBagConstraints.WEST;
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 2;
-		add(label, gbc_label);
+		add(label);
 		
 		JLabel lblNumeroid = new JLabel("NumeroID");
-		GridBagConstraints gbc_lblNumeroid = new GridBagConstraints();
-		gbc_lblNumeroid.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNumeroid.gridx = 3;
-		gbc_lblNumeroid.gridy = 2;
-		add(lblNumeroid, gbc_lblNumeroid);
+		lblNumeroid.setBounds(237, 32, 11, 14);
+		add(lblNumeroid);
 		lblNumeroid.setText(String.valueOf(Peliculas.getId()));
 		
 		JLabel label_1 = new JLabel("Nombre");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 1;
-		gbc_label_1.gridy = 3;
-		add(label_1, gbc_label_1);
+		label_1.setBounds(72, 57, 54, 14);
+		add(label_1);
 		
 		textFieldAgregarPelicula = new JTextField();
-		GridBagConstraints gbc_textFieldAgregarPelicula = new GridBagConstraints();
-		gbc_textFieldAgregarPelicula.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldAgregarPelicula.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldAgregarPelicula.gridx = 3;
-		gbc_textFieldAgregarPelicula.gridy = 3;
-		add(textFieldAgregarPelicula, gbc_textFieldAgregarPelicula);
+		textFieldAgregarPelicula.setBounds(168, 57, 152, 20);
+		add(textFieldAgregarPelicula);
 		textFieldAgregarPelicula.setColumns(10);
 		
 		JLabel label_2 = new JLabel("Genero");
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 1;
-		gbc_label_2.gridy = 4;
-		add(label_2, gbc_label_2);
+		label_2.setBounds(72, 92, 67, 14);
+		add(label_2);
 		
 	
 			
 			cbCategorias = new JComboBox<Categorias>();
-			GridBagConstraints gbc_cbCategorias = new GridBagConstraints();
-			gbc_cbCategorias.insets = new Insets(0, 0, 5, 5);
-			gbc_cbCategorias.fill = GridBagConstraints.HORIZONTAL;
-			gbc_cbCategorias.gridx = 3;
-			gbc_cbCategorias.gridy = 4;
-			add(cbCategorias, gbc_cbCategorias);
+			cbCategorias.setBounds(168, 88, 152, 20);
+			add(cbCategorias);
 
+			cbCategorias.addItem(new Categorias(0, "Seleccione un Género"));
 			cbCategorias.addItem(new Categorias(1, "Terror"));
 			cbCategorias.addItem(new Categorias(2, "Accion"));
 			cbCategorias.addItem(new Categorias(3, "Suspenso"));
 			cbCategorias.addItem(new Categorias(4, "Romantica"));
 			
 		
+			list = new JList();
+			dlModel = new DefaultListModel<Peliculas>();
+			list.setModel(dlModel);
 		
 		//Evento boton Aceptar
 		JButton btnAceptarAgregarPelicula = new JButton("Aceptar");
+		btnAceptarAgregarPelicula.setBounds(72, 144, 91, 23);
 		btnAceptarAgregarPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+			        if (!textFieldAgregarPelicula.getText().isEmpty() && cbCategorias.getSelectedIndex() != 0) {
+			            Peliculas p = new Peliculas();
+			            p.setNombre(textFieldAgregarPelicula.getText());
+			            dlModel.addElement(p);
+			            
+			        } else if(textFieldAgregarPelicula.getText().isEmpty() && cbCategorias.getSelectedIndex() == 0) {
+			            throw new Exception("Debe completar la película y seleccionar un género");
+			            
+			          } else if (textFieldAgregarPelicula.getText().isEmpty()) {
+			        		throw new Exception("Debe completar la película");
+			        		
+			        	} else {
+			        	   throw new Exception("Debe seleccionar un género");
+			        	}
+			        
+			      } catch (Exception ex) {
+			          JOptionPane.showMessageDialog(null, ex.getMessage());
+			        }				
 			}
 		});
-		
-		GridBagConstraints gbc_btnAceptarAgregarPelicula = new GridBagConstraints();
-		gbc_btnAceptarAgregarPelicula.fill = GridBagConstraints.BOTH;
-		gbc_btnAceptarAgregarPelicula.gridwidth = 2;
-		gbc_btnAceptarAgregarPelicula.insets = new Insets(0, 0, 0, 5);
-		gbc_btnAceptarAgregarPelicula.gridx = 1;
-		gbc_btnAceptarAgregarPelicula.gridy = 6;
-		add(btnAceptarAgregarPelicula, gbc_btnAceptarAgregarPelicula);
+		add(btnAceptarAgregarPelicula);
 		
 		
 	}
