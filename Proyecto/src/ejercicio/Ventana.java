@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana extends JFrame {
 
@@ -16,6 +18,7 @@ public class Ventana extends JFrame {
 	public Ventana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setTitle("Programa");
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -25,6 +28,17 @@ public class Ventana extends JFrame {
 		
 		JMenuItem miAgregar = new JMenuItem("Agregar");
 		menuPeli.add(miAgregar);
+		
+		miAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.removeAll();
+				PanelAgregarPelicula panelAgregar = new PanelAgregarPelicula();
+				contentPane.add(panelAgregar);
+				contentPane.repaint();
+				contentPane.revalidate();
+			}
+		});
+		
 		
 		JMenuItem miListar = new JMenuItem("Listar");
 		menuPeli.add(miListar);
