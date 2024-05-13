@@ -1,7 +1,10 @@
 package ejercicio;
 
 import java.awt.BorderLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
@@ -14,11 +17,14 @@ public class Ventana extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private DefaultListModel<Peliculas> dlistModel;
 
 	public Ventana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setTitle("Programa");
+		
+		dlistModel = new DefaultListModel<Peliculas>();
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -32,7 +38,7 @@ public class Ventana extends JFrame {
 		miAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
-				PanelAgregarPelicula panelAgregar = new PanelAgregarPelicula();
+				PanelAgregarPelicula panelAgregar = new PanelAgregarPelicula(dlistModel);
 				contentPane.add(panelAgregar);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -44,7 +50,7 @@ public class Ventana extends JFrame {
 		miListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
-				PanelListarPelicula panelListar = new PanelListarPelicula();
+				PanelListarPelicula panelListar = new PanelListarPelicula(dlistModel);
 				contentPane.add(panelListar);
 				contentPane.repaint();
 				contentPane.revalidate();

@@ -21,14 +21,14 @@ public class PanelAgregarPelicula extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField textFieldAgregarPelicula;
 	private JComboBox<Categorias> cbCategorias;
-	private JList list;
+	//private JList list;
 	private DefaultListModel<Peliculas> dlModel;
 	
 	
 
-	public PanelAgregarPelicula() {
+	public PanelAgregarPelicula(DefaultListModel<Peliculas> dlModel) {
 		setLayout(null);
-		
+		this.dlModel=dlModel;
 		JLabel label = new JLabel("ID");
 		label.setBounds(72, 32, 11, 14);
 		label.setHorizontalAlignment(SwingConstants.LEFT);
@@ -65,9 +65,9 @@ public class PanelAgregarPelicula extends JPanel {
 			cbCategorias.addItem(new Categorias(4, "Romantica"));
 			
 		
-			list = new JList();
-			dlModel = new DefaultListModel<Peliculas>();
-			list.setModel(dlModel);
+			//list = new JList();
+			//dlModel = new DefaultListModel<Peliculas>();
+			//list.setModel(dlModel);
 		
 		//Evento boton Aceptar
 		JButton btnAceptarAgregarPelicula = new JButton("Aceptar");
