@@ -2,12 +2,7 @@ package ejercicio;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -29,28 +24,28 @@ public class PanelAgregarPelicula extends JPanel {
 	public PanelAgregarPelicula(DefaultListModel<Peliculas> dlModel) {
 		setLayout(null);
 		this.dlModel=dlModel;
-		JLabel label = new JLabel("ID");
-		label.setBounds(72, 32, 11, 14);
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		add(label);
+		JLabel label_id = new JLabel("ID");
+		label_id.setBounds(72, 32, 11, 14);
+		label_id.setHorizontalAlignment(SwingConstants.LEFT);
+		add(label_id);
 		
 		JLabel lblNumeroid = new JLabel("NumeroID");
 		lblNumeroid.setBounds(168, 32, 11, 14);
 		add(lblNumeroid);
 		lblNumeroid.setText(String.valueOf(Peliculas.getId()));
 		
-		JLabel label_1 = new JLabel("Nombre");
-		label_1.setBounds(72, 57, 54, 14);
-		add(label_1);
+		JLabel label_nombre = new JLabel("Nombre");
+		label_nombre.setBounds(72, 57, 54, 14);
+		add(label_nombre);
 		
 		textFieldAgregarPelicula = new JTextField();
 		textFieldAgregarPelicula.setBounds(168, 57, 152, 20);
 		add(textFieldAgregarPelicula);
 		textFieldAgregarPelicula.setColumns(10);
 		
-		JLabel label_2 = new JLabel("Genero");
-		label_2.setBounds(72, 92, 67, 14);
-		add(label_2);
+		JLabel label_genero = new JLabel("Genero");
+		label_genero.setBounds(72, 92, 67, 14);
+		add(label_genero);
 		
 	
 			
@@ -63,12 +58,7 @@ public class PanelAgregarPelicula extends JPanel {
 			cbCategorias.addItem(new Categorias(2, "Accion"));
 			cbCategorias.addItem(new Categorias(3, "Suspenso"));
 			cbCategorias.addItem(new Categorias(4, "Romantica"));
-			
-		
-			//list = new JList();
-			//dlModel = new DefaultListModel<Peliculas>();
-			//list.setModel(dlModel);
-		
+
 		//Evento boton Aceptar
 		JButton btnAceptarAgregarPelicula = new JButton("Aceptar");
 		btnAceptarAgregarPelicula.setBounds(72, 144, 91, 23);
@@ -78,6 +68,7 @@ public class PanelAgregarPelicula extends JPanel {
 			        if (!textFieldAgregarPelicula.getText().isEmpty() && cbCategorias.getSelectedIndex() != 0) {
 			            Peliculas p = new Peliculas();
 			            p.setNombre(textFieldAgregarPelicula.getText());
+			            Peliculas.setId(Peliculas.getId());
 			            dlModel.addElement(p);
 			            JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
 			            

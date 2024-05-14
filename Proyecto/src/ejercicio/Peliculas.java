@@ -7,7 +7,9 @@ public class Peliculas {
 	private Categorias categorias;
 	
 	//Constructores
+	//Constructores
 	public Peliculas(String nombre, Categorias categorias) {
+		super();
 		id++;
 		Nombre = nombre;
 		this.categorias = categorias;

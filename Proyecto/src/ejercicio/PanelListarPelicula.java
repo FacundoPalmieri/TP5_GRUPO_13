@@ -19,11 +19,7 @@ public class PanelListarPelicula extends JPanel {
 	private GroupLayout groupLayout;
 	private JList<Peliculas> jListPeliculas;
 	private DefaultListModel<Peliculas> listModelPeliculas;
-	
-	/**
-	 * Create the panel.
-	 */
-	
+
 	public PanelListarPelicula() {
 		
 		lblPeliculas = new JLabel("Peliculas");
