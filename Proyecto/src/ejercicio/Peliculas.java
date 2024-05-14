@@ -8,7 +8,6 @@ public class Peliculas {
 	
 	//Constructores
 	public Peliculas(String nombre, Categorias categorias) {
-		super();
 		id++;
 		Nombre = nombre;
 		this.categorias = categorias;
@@ -36,8 +35,8 @@ public class Peliculas {
 		Nombre = nombre;
 	}
 
-	public Categorias getCategorias() {
-		return categorias;
+	public String getCategorias() {
+		return categorias.toString();
 	}
 
 	public void setCategorias(Categorias categorias) {

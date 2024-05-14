@@ -3,14 +3,14 @@ package ejercicio;
 public class Categorias {
 
 	private int id;
-	private String Nombre;
+	private String nombre;
 	
 	//Constructores
 	
-	public Categorias(int id, String nombre) {
-		super();
+	public Categorias(int id,String nombre) {
+		//super();
 		this.id = id;
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	public Categorias() {
@@ -19,27 +19,19 @@ public class Categorias {
 
 	//Getters y Setters
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	//ToString
 	
 	@Override
 	public String toString() {
-		return Nombre;
+		return nombre;
 	}
 	
 	

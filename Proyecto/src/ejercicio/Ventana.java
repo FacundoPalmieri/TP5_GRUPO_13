@@ -17,7 +17,7 @@ public class Ventana extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private DefaultListModel<Peliculas> dlistModel;
+	private static DefaultListModel<Peliculas> dlistModel;
 
 	public Ventana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
