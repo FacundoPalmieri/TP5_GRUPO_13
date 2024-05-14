@@ -21,7 +21,6 @@ public class Ventana extends JFrame {
 
 	public Ventana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
 		setTitle("Programa");
 		
 		dlistModel = new DefaultListModel<Peliculas>();
@@ -29,7 +28,7 @@ public class Ventana extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu menuPeli = new JMenu("Pel\u00EDculas");
+		JMenu menuPeli = new JMenu("Peliculas");
 		menuBar.add(menuPeli);
 		
 		JMenuItem miAgregar = new JMenuItem("Agregar");

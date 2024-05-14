@@ -15,12 +15,17 @@ public class Peliculas {
 	}
 	
 	public Peliculas() {
+		id++;
 	}
 	
 	//Getters y Setters
 
 	public static int getId() {
 		return id;
+	}
+	
+	public static void setId(int id) {
+		Peliculas.id = id;
 	}
 
 	public String getNombre() {
@@ -38,6 +43,7 @@ public class Peliculas {
 	public void setCategorias(Categorias categorias) {
 		this.categorias = categorias;
 	}
+	
 
 	
 	//ToString
@@ -45,7 +51,7 @@ public class Peliculas {
 	public String toString() {
 		return "Peliculas [id=" + id + ", Nombre=" + Nombre + ", categorias=" + categorias + "]";
 	}
-	
+
 
 	
 	

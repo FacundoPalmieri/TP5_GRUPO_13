@@ -35,7 +35,7 @@ public class PanelAgregarPelicula extends JPanel {
 		add(label);
 		
 		JLabel lblNumeroid = new JLabel("NumeroID");
-		lblNumeroid.setBounds(237, 32, 11, 14);
+		lblNumeroid.setBounds(168, 32, 11, 14);
 		add(lblNumeroid);
 		lblNumeroid.setText(String.valueOf(Peliculas.getId()));
 		
@@ -79,6 +79,14 @@ public class PanelAgregarPelicula extends JPanel {
 			            Peliculas p = new Peliculas();
 			            p.setNombre(textFieldAgregarPelicula.getText());
 			            dlModel.addElement(p);
+			            JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
+			            
+			            textFieldAgregarPelicula.setText("");
+		                cbCategorias.setSelectedIndex(0);
+		                 
+		            	lblNumeroid.setText(String.valueOf(Peliculas.getId()));
+
+		                
 			            
 			        } else if(textFieldAgregarPelicula.getText().isEmpty() && cbCategorias.getSelectedIndex() == 0) {
 			            throw new Exception("Debe completar la película y seleccionar un género");
