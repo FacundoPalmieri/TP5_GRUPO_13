@@ -11,6 +11,11 @@ import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import java.util.Collections;
+import java.util.Comparator; 
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class PanelListarPelicula extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -52,13 +57,33 @@ public class PanelListarPelicula extends JPanel {
 		setLayout(groupLayout);
 
 	}
-	public void setDefaultLisModel(DefaultListModel<Peliculas> listModel) {
-		this.listModelPeliculas = listModel;
-		jListPeliculas.setModel(this.listModelPeliculas);
+	
+	public void setDefaultListModel(DefaultListModel<Peliculas> listModel) {
+	    this.listModelPeliculas = listModel;
+
+	
+	    List<Peliculas> peliculasList = new ArrayList<>();
+	    for (int i = 0; i < listModelPeliculas.size(); i++) {
+	        peliculasList.add(listModelPeliculas.getElementAt(i));
+	    }
+
+	
+	    Collections.sort(peliculasList, new Comparator<Peliculas>() {
+	        public int compare(Peliculas pelicula1, Peliculas pelicula2) {
+	            return pelicula1.getNombre().compareTo(pelicula2.getNombre());
+	        }
+	    });
+
+
+	    listModelPeliculas.clear();
+
+	 
+	    for (Peliculas pelicula : peliculasList) {
+	        listModelPeliculas.addElement(pelicula);
+	    }
+
+
+	    jListPeliculas.setModel(listModelPeliculas);
 	}
-	
-	
-	
-	
 
 }

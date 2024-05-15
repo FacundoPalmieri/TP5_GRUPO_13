@@ -50,7 +50,7 @@ public class Ventana extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
 				PanelListarPelicula panelListar = new PanelListarPelicula();
-				panelListar.setDefaultLisModel(dlistModel);
+				panelListar.setDefaultListModel(dlistModel);
 				contentPane.add(panelListar);
 				contentPane.repaint();
 				contentPane.revalidate();

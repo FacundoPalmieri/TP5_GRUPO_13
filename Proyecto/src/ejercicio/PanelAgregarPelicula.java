@@ -66,9 +66,8 @@ public class PanelAgregarPelicula extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 			        if (!textFieldAgregarPelicula.getText().isEmpty() && cbCategorias.getSelectedIndex() != 0) {
-			            Peliculas p = new Peliculas();
+			            Peliculas p = new Peliculas((Categorias)cbCategorias.getSelectedItem());
 			            p.setNombre(textFieldAgregarPelicula.getText());
-			            Peliculas.setId(Peliculas.getId());
 			            dlModel.addElement(p);
 			            JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
 			            
