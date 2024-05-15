@@ -5,17 +5,19 @@ public class Peliculas {
 	private static int id=1;
 	private String Nombre;
 	private Categorias categorias;
+	private int idPelicula;
 	
 	//Constructores
-	//Constructores
 	public Peliculas(String nombre, Categorias categorias) {
-		super();
+		idPelicula=id;
 		id++;
 		Nombre = nombre;
 		this.categorias = categorias;
 	}
 	
-	public Peliculas() {
+	public Peliculas(Categorias categorias) {
+		idPelicula=id;
+		this.categorias=categorias;
 		id++;
 	}
 	
@@ -25,8 +27,8 @@ public class Peliculas {
 		return id;
 	}
 	
-	public static void setId(int id) {
-		Peliculas.id = id;
+	public int getidPelicula() {
+		return idPelicula;
 	}
 
 	public String getNombre() {
@@ -38,7 +40,7 @@ public class Peliculas {
 	}
 
 	public String getCategorias() {
-		return categorias.toString();
+		return categorias.getNombre();
 	}
 
 	public void setCategorias(Categorias categorias) {
@@ -50,7 +52,7 @@ public class Peliculas {
 	//ToString
 	@Override
 	public String toString() {
-		return "Peliculas [id=" + id + ", Nombre=" + Nombre + ", categorias=" + categorias + "]";
+		return "Peliculas [id=" + idPelicula + ", Nombre=" + Nombre + ", categorias=" + getCategorias() + "]";
 	}
 
 
